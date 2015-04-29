@@ -15,9 +15,9 @@ public class RandomNumberArray {
     
     public RandomNumberArray(){
         nums = new int[50];
-        for(int i : nums){
+        for(int i = 0; i < nums.length; i++){
             nums[i] = (int) (Math.random() * 100);
-            System.out.println(nums[i]);
+            
             
         }
         size = 50;
@@ -26,21 +26,24 @@ public class RandomNumberArray {
     
     
     public void RemoveDup(){
-        for(int i : nums){
-            for(int j = 0; j < nums.length; j++){
-                if(i == nums[j]){
-                    for(int k = j; k < (nums.length - 1); k++){
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i+1; j < nums.length; j++){
+                if(nums[i] == nums[j]){
+                    for(int k = j; k < (size - 1); k++){
                         nums[k] = nums[k+1];
                     }
+                    
                     size--;
                 }
             }
+            System.out.println(nums[i]);
         }
     }
     
     public void WIPE(){
         int[] temp = new int[50];
         nums = temp;
+        size = 0;
     }
     
     public int getSize(){
