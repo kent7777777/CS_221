@@ -9,7 +9,7 @@ package RandomNumberPackage;
  *
  * @author Kevin
  */
-public class RandomNumberArray {
+public class RandomNumberArray<E> {
     private int[] nums;
     private int size;
     
