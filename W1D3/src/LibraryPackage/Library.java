@@ -9,7 +9,7 @@ package LibraryPackage;
  *
  * @author Kevin
  */
-public class Library {
+public class Library implements Comparable {
     int bookID;
     String ISBN;
     String bookName;
@@ -52,5 +52,18 @@ public class Library {
         this.ISBN = ISBN;
         this.bookName = bookName;
         this.price = price;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Library Aobj = (Library)o;
+        if(this.price > Aobj.price){
+            return 1;
+        }else if(this.price < Aobj.price){
+            return -1;
+            
+        }else{
+            return 0;
+        }
     }
 }

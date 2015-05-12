@@ -6,6 +6,8 @@
 package LibraryPackage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  *
@@ -16,12 +18,16 @@ public class LibraryArray {
         ArrayList<Library> books = new ArrayList<>();
         books.add(new Library(100, "sapdof", "The King", 10000));
         books.add(new Library(101, "dfijfn", "The Queen", 10001));
+        books.add(new Library(104, "asodpi", "The Cat", 10000000));
         books.add(new Library(102, "aosdfh", "The Prince", .5));
         System.out.println(books.get(1).getBookName());
-        books.remove(2);
+        
         System.out.println(books.size());
         System.out.println(books.isEmpty());
-        
+        Collections.sort(books);
+        for(Library l : books){
+            System.out.println(l.price);
+        }
     }
 }
 
