@@ -85,6 +85,64 @@ public void insert(int id, double dd)
    }  // end insert()
 //-------------------------------------------------------------
 
+public boolean delete(int key){
+    Node current = root;
+    Node parent = root;
+    boolean isLeftChild = true;
+    
+    while(current.dData != key){
+        parent = current;
+        if(current.dData < key){
+            current = current.rightChild;
+            isLeftChild = false;
+        }else if(current.dData > key){
+            current = current.leftChild;
+            isLeftChild = true;
+        }else{
+            return false;
+        }
+    }
+    if(current.leftChild == null && current.rightChild == null){
+        if(isLeftChild){
+            parent.leftChild = null;
+        }else{
+            parent.rightChild = null;
+        }
+    }else if(current.rightChild == null){
+        if(isLeftChild){
+            parent.leftChild = current.leftChild;
+        }else{
+            parent.rightChild = current.leftChild;
+        }
+    }else if(current.leftChild == null){
+        if(isLeftChild){
+            parent.leftChild = current.rightChild;
+        }else{
+            parent.rightChild = current.rightChild;
+        }
+    }else{
+        
+    }
+}
+
+public Node getSuccessor(Node n){
+    Node successorParent = n;
+    Node successor = n;
+    Node current = n.rightChild;
+    while(current != null){
+        successorParent = successor;
+        successor = current;
+        current = current.leftChild;
+    }
+    
+    if(successor != n.rightChild){
+        successorParent.leftChild = successor.rightChild;
+        successor.rightChild = n.rightChild;
+    }
+    return successor;
+}
+
+
  void preOrder(Node localRoot){
      if(localRoot != null)
       {
@@ -134,6 +192,9 @@ public void insert(int id, double dd)
  }
  
  int leafs(Node localRoot){
+     if(localRoot == null){
+         return 0;
+     }
      if(localRoot.leftChild == null && localRoot.rightChild == null){
          return 1;
      }
